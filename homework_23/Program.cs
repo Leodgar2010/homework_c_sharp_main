@@ -4,22 +4,23 @@
 // 5 -> 1, 8, 27, 64, 125
 Console.WriteLine ("Вычисление кубов числе от 0 до введенного числа");
 Console.WriteLine("Введите положительное число:");
-var numberString = Console.ReadLine();
+string? numberString = Console.ReadLine();
 int number = int.Parse(numberString!);
 int count = 1;
 if (number <0)
 {    
-    number = number*-1;
+    number = Math.Abs(number);
     Console.WriteLine ("Вы ввели отрицательное число, что противоречит условию задачи. Введенное число было преобразовано в положительное по модулю.");
 }
 if (number ==0)
 {    
     Console.WriteLine ("Вы ввели ноль. Программа ничего Вам не вычислит");
-    return;
 }
-Console.Write ("Кубы все чисел от 1 до "+number+": ");
+else 
+{Console.Write ("Кубы все чисел от 1 до "+number+": ");
 while (count <=number)
 {
     Console.Write (Math.Pow(count, 3)+ " ");
     count += 1;
+}
 }
