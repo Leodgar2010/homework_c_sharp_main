@@ -22,8 +22,5 @@ int numberYB = int.Parse(numberYBstring!);
 Console.WriteLine("Введите координату Z точки B:");
 string? numberZBstring = Console.ReadLine();
 int numberZB = int.Parse(numberZBstring!);
-int numberXX = numberXB - numberXA;
-int numberYY = numberYB - numberYA;
-int numberZZ = numberZB - numberZA;
 double result = (double) Math.Sqrt ((Math.Pow(numberXB - numberXA, 2)) + (Math.Pow(numberYB - numberYA, 2))+ (Math.Pow(numberZB - numberZA, 2)));
 Console.WriteLine("Расстояние между точками А и В равно: " + result + ".");
