@@ -41,6 +41,7 @@ for (int i=0; i<8;i++)
 Console.WriteLine ("Задаем массив из 8 элементов и выводим его на экран");
 string [] list = New_List_8_elements ();
 PrintList (list);
+// подготовлено для проверки
 
 
 

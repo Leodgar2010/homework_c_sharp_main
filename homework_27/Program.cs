@@ -21,3 +21,4 @@ Console.WriteLine ("Выдаём сумму цифр во введенном ч�
 Console.WriteLine ("Введите число:");
 string? numString = Console.ReadLine();
 Console.WriteLine ("Cумма цифр в данном числе: " + (AllDigitSum (numString!)));
+// подготовлено для проверки
