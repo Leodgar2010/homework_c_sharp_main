@@ -7,14 +7,20 @@ int AllDigitSum (string numberString)
 {
     int number_lenght = numberString.Length;
     int number = int.Parse (numberString!);
-    int result = (number/1)%10;
-    int intPow =0;
-    for (int i=1; i<number_lenght; i++)
-        {
-            intPow=((int) (Math.Pow(10,i)));
-            result = result+ (number/(1*intPow))%10;
+    int result = 0;
+    while (number > 0)
+    {
+        result += number % 10; // result = result+result % 10
+        number /= 10;// number = number/10
+    }
+    // int result = (number/1)%10;
+    // int intPow =0;
+    // for (int i=1; i<number_lenght; i++)
+    //     {
+    //         intPow=((int) (Math.Pow(10,i)));
+    //         result = result+ (number/(1*intPow))%10;
  
-        }
+    //     }
     return result;
 }
 Console.WriteLine ("Выдаём сумму цифр во введенном числе");
