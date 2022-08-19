@@ -15,4 +15,5 @@ for (int i=1; i<number2; i++)
     result = result*number1;
 }
 Console.WriteLine (number1+ " в степени "+ number2+" = "+ result);
+// подготовлено для проверки
 
