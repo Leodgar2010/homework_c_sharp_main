@@ -3,11 +3,8 @@
 // числами. Напишите программу, которая покажет 
 // количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
-int [] create_random_array_3number_positive ()
+int [] CreateRandomArray3numberPositive (int number)
 {
-   Console.WriteLine ("Введите размер массива: ");
-    var numberString = Console.ReadLine();
-    int number = int.Parse(numberString!);
     var random = new Random();
     var result = new int[number];
     for (int i = 0; i < result.Length; i++)
@@ -16,13 +13,13 @@ int [] create_random_array_3number_positive ()
     }
     return result;
 }
-string print_array_numbers (int [] arr)
+string PrintArrayNumbers (int [] arr)
 {
     string arrStr = string.Join(", ", arr);
     string result = string.Concat("[", arrStr, "]");
     return result;
 }
-int even_numbers_in_array (int [] arr)
+int EvenNumbersInArray (int [] arr)
 {    
     int count = 0;
     for (int i=0; i<arr.Length; i++)
@@ -32,6 +29,9 @@ int even_numbers_in_array (int [] arr)
     return count;
 } 
 Console.WriteLine ("Сколько чётных чисел в массиве заполненном случайными положительными трёхзначными числами?");
-int [] array = create_random_array_3number_positive();
-print_array_numbers (array);
-Console.Write ("В массиве " + print_array_numbers (array) + " количество чётных чисел - "+even_numbers_in_array(array)+".");
+Console.WriteLine ("Введите размер массива: ");
+var numberString = Console.ReadLine();
+int number = int.Parse(numberString!);
+int [] array = CreateRandomArray3numberPositive(number);
+PrintArrayNumbers (array);
+Console.Write ("В массиве " + PrintArrayNumbers (array) + " количество чётных чисел - "+EvenNumbersInArray(array)+".");
