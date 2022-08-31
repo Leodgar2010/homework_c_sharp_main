@@ -32,23 +32,20 @@ int[,] MultiplicationArray(int[,] firstArray, int[,] secondArray)
     int[,] result = new int[firstArray.GetLength(0), firstArray.GetLength(1)];
     for (int i=0; i<firstArray.GetLength (0); i++)
         {
-            for (int j=0; j<firstArray.GetLength (0); j++) 
+            for (int j=0; j<secondArray.GetLength (1); j++) 
             {
-                sum += firstArray [i,j]*secondArray [j,i]; 
-            }
-            Console.WriteLine (sum);          
-            result [i,resultColumn]=sum;
-            resultColumn ++;
-            sum = 0;       
+                for (int k=0; k<secondArray.GetLength (1); k++)
+                result [i,j] += firstArray [i,k]*secondArray [k,j]; 
+            }      
         }
     
     return result;
 }
 Console.WriteLine("Произведение первого массива");
-int[,] firstArray = CreateArrayWithRandomNumbers(3, 3);
+int[,] firstArray = CreateArrayWithRandomNumbers(2, 2);
 PrintArray(firstArray);
 Console.WriteLine("на второй массив");
-int[,] secondArray = CreateArrayWithRandomNumbers(3, 3);
+int[,] secondArray = CreateArrayWithRandomNumbers(2, 2);
 PrintArray(secondArray);
 Console.WriteLine("равняется");
 PrintArray(MultiplicationArray(firstArray, secondArray));
