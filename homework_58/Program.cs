@@ -27,8 +27,6 @@ void PrintArray(int[,] array)
 }
 int[,] MultiplicationArray(int[,] firstArray, int[,] secondArray)
 {
-    int sum=0;
-    int resultColumn = 0;
     int[,] result = new int[firstArray.GetLength(0), firstArray.GetLength(1)];
     for (int i=0; i<firstArray.GetLength (0); i++)
         {
