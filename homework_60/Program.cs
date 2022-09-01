@@ -7,52 +7,56 @@
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
-int[,,] CreateArrayWithRandomNumbersThree(int m, int n, int t)
+
+int[] ArrayWithDifferntTwoMeaningNumbers(int length, int first, int last)
 {
-    int[,,] result = new int[m, n, t];
     var random = new Random();
     int temp = 0;
-    int[] source = new int[89];
-    source[0]=random.Next(10, 100);
-    for (int i = 1; i < source.Length; i++)
+    int[] source = new int[length];                     // массив источник неповторяющихся двузначных чисел
+    for (int i = 0; i < source.Length; i++)         // цикл заполнения массива-источника случайными неповторяющимися двузначными числами
     {
-        temp = source [i-1];
-        source [i] = random.Next(10, 100);
+        source[i] = random.Next(first, last);
+        temp = source[i];
         for (int j = 0; j < source.Length; j++)
         {
             while (temp == source[j])
-                source[j] = random.Next(10, 100);
+            {
+                temp = random.Next(10, 100);
+                j = 0;
+            }
         }
-        Console.Write ($"{source[i]}, ");
+        source[i] = temp;
     }
-    Console.WriteLine ();
-    int a=0;
+    return source;
+}
+int[,,] CreateArrayWithRandomNumbersFromSource(int [] source,int m, int n, int t)
+{
+    int [,,] result = new int [m,n,t];
+    int a = 0;
     for (int i = 0; i < result.GetLength(0); i++)
     {
         for (int j = 0; j < result.GetLength(1); j++)
         {
             for (int k = 0; k < result.GetLength(2); k++)
             {
-                result [i,j,k]=source [a];
+                result[i, j, k] = source[a];
                 a++;
             }
         }
     }
     return result;
 }
-
 void PrintArrayThree(int[,,] array)
+{
+    for (var i = 0; i < array.GetLength(0); i++)
     {
-        for (var i = 0; i < array.GetLength(0); i++)
+        for (var j = 0; j < array.GetLength(1); j++)
         {
-            for (var j = 0; j < array.GetLength(1); j++)
-            {
-                for (int k = 0; k < array.GetLength(2); k++) Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
-                Console.WriteLine();
-            }
+            for (int k = 0; k < array.GetLength(2); k++) Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
+            Console.WriteLine();
         }
     }
+}
 
-    int[,,] array = CreateArrayWithRandomNumbersThree(3, 3, 3);
+PrintArrayThree (CreateArrayWithRandomNumbersFromSource(ArrayWithDifferntTwoMeaningNumbers(90,10,100), 3, 3, 3));
 
-    PrintArrayThree(array);
