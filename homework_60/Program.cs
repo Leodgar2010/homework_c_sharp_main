@@ -10,34 +10,49 @@
 int[,,] CreateArrayWithRandomNumbersThree(int m, int n, int t)
 {
     int[,,] result = new int[m, n, t];
-    //int [] source =new int [89];
-    //for (int i=10; i<source.Length; i++) source [i-10] = i;
+    var random = new Random();
+    int temp = 0;
+    int[] source = new int[89];
+    source[0]=random.Next(10, 100);
+    for (int i = 1; i < source.Length; i++)
+    {
+        temp = source [i-1];
+        source [i] = random.Next(10, 100);
+        for (int j = 0; j < source.Length; j++)
+        {
+            while (temp == source[j])
+                source[j] = random.Next(10, 100);
+        }
+        Console.Write ($"{source[i]}, ");
+    }
+    Console.WriteLine ();
+    int a=0;
     for (int i = 0; i < result.GetLength(0); i++)
     {
         for (int j = 0; j < result.GetLength(1); j++)
         {
             for (int k = 0; k < result.GetLength(2); k++)
             {
-               result[i, j, k] =new Random ().Next(10,99);
+                result [i,j,k]=source [a];
+                a++;
             }
         }
     }
     return result;
 }
 
-
 void PrintArrayThree(int[,,] array)
-{
-    for (var i = 0; i < array.GetLength(0); i++)
     {
-        for (var j = 0; j < array.GetLength(1); j++)
+        for (var i = 0; i < array.GetLength(0); i++)
         {
-            for (int k = 0; k < array.GetLength(2); k++) Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
-            Console.WriteLine();
+            for (var j = 0; j < array.GetLength(1); j++)
+            {
+                for (int k = 0; k < array.GetLength(2); k++) Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
+                Console.WriteLine();
+            }
         }
     }
-}
 
-int[,,] array = CreateArrayWithRandomNumbersThree(3, 3, 3);
+    int[,,] array = CreateArrayWithRandomNumbersThree(3, 3, 3);
 
-PrintArrayThree(array);
+    PrintArrayThree(array);

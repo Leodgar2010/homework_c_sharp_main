@@ -15,43 +15,38 @@ void PrintArray(int[,] array)
         Console.WriteLine();
     }
 }
+
 int[,] array = new int[4, 4];
 int count = 1;
-int line = array.GetLength(0);
-int column = array.GetLength(1);
-for (int i = 0; i < column; i++)// заполняем первую строку
+for (int i = 0; i < 4; i++)     // заполняем первую строку
 {
-    array [0,i] = count;
+    array[0, i] = count;
     count++;
 }
-column--;
-for (int i = line-1; i > 0; i--) //заполняем последнюю колонку
+for (int i = 1; i < 4; i++)   // заполняем последнюю колонку
 {
-    array [line-i,column] = count;
+    array[i, 3] = count;
     count++;
 }
-line --;
-for (int i = 1; i < column+1; i++)//заполняем нижнюю строку
+for (int i = 2; i < 5; i++)   // заполняем нижнюю строку
 {
-      array [line, column-i] = count;
-      count ++;
+    array[3, 4 - i] = count;
+    count++;
 }
-for (int i = 1; i < line; i++)//заполняем правую колонку
+for (int i = 2; i < 4; i++)     // заполняем левую колонку
 {
-      array [line-i, 0] = count;
-      count ++;
+    array[4 - i, 0] = count;
+    count++;
 }
-column++;
-for (int i = column-1; i>1; i--)//заполняем вторую строку
+for (int i = 1; i < 3; i++)     // заполняем вторую строку
 {
-      array [1, column -i] = count;
-      count ++;
+    array[1, i] = count;
+    count++;
 }
-column--;
-for (int i = 1; i<column; i++)//заполняем третью строку
+for (int i = 2; i < 4; i++)     //заполняем третью строку
 {
-      array [2, column - i] = count;
-      count ++;
+    array[2, 4 - i] = count;
+    count++;
 }
 
 PrintArray(array);
